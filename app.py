@@ -1,8 +1,5 @@
 import pandas as pd
 import streamlit as st
-import seaborn as sns
-import matplotlib.pyplot as plt
-import altair as alt
 
 st.set_page_config(page_title='Hourly Energy Consumption',
                    page_icon=':bar_char:',
