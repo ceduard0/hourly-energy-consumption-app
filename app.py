@@ -1,6 +1,7 @@
 import pandas as pd
 import streamlit as st
 
+
 st.set_page_config(page_title='Hourly Energy Consumption',
                    page_icon=':bar_char:',
                    layout='wide')
@@ -63,11 +64,6 @@ df_selection = df.query(
     'year == @year & day_name == @day_name & month_name == @month_name'
 )
 
-""" 
-## AEP_hourly Dataset
-"""
-df_selection
-
 daily_trends = df_selection.pivot_table(index=df_selection['hour'], 
                      columns='day_name', 
                      values='AEP_MW',
@@ -79,17 +75,32 @@ monthly_trends = df_selection.pivot_table(index=df_selection['hour'],
                      values='AEP_MW',
                      aggfunc='sum')
                      
-with st.container():  
-    """ 
-    ## AEP - Daily Trends
-    """
-              
-    st.line_chart(daily_trends)
-    
-    """ 
-    ## AEP - Monthly Trends
-    """    
-    st.line_chart(monthly_trends)
-    
+annual_comparison = df_selection.groupby(['year'])['AEP_MW'].sum()
 
+
+with st.container():  
+    tab1, tab2 = st.tabs(["Charts", "Data"])
+       
+    with tab1:
+        """ 
+        ## AEP - Daily Trends
+        """
                 
+        st.line_chart(daily_trends)
+        
+        """ 
+        ## AEP - Monthly Trends
+        """    
+        st.line_chart(monthly_trends)
+        
+        """ 
+        ## AEP - Annual Comparison
+        """    
+        st.bar_chart(annual_comparison)
+                
+    with tab2:
+        """ 
+        ## AEP_hourly Dataset
+        """
+        df_selection 
+        
