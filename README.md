@@ -1,7 +1,7 @@
 # Hourly Energy Consumption Dashboard
 
 ![Dashboard Preview](https://github.com/ceduard0/hourly-energy-consumption-app/blob/main/hourly-energy-consumption-app.png?raw=true)
-[demo]: https://www.kaggle.com/datasets/robikscube/hourly-energy-consumption
+[demo](https://ceduard0-hourly-energy-consumption-app-app-53gc6g.streamlit.app/)
 
 
 
